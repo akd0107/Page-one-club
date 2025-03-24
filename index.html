@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page One Club</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #faf7f2;
+      color: #333;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #book-container {
+      max-width: 600px;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #title {
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    #author {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    #first-page {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>📖 Page One Club</h1>
+  <div id="book-container">
+    <div id="title"></div>
+    <div id="author"></div>
+    <div id="first-page"></div>
+    <a id="read-more" href="#" target="_blank">Read Full Book</a><br />
+    <button onclick="loadRandomBook()">Give me another!</button>
+  </div>
+
+  <script>
+    const books = [
+      {
+        title: "Pride and Prejudice",
+        author: "Jane Austen",
+        pageOne: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife...",
+        link: "https://www.gutenberg.org/ebooks/1342"
+      },
+      {
+        title: "Frankenstein",
+        author: "Mary Shelley",
+        pageOne: "You will rejoice to hear that no disaster has accompanied the commencement of an enterprise which you have regarded with such evil forebodings...",
+        link: "https://www.gutenberg.org/ebooks/84"
+      },
+      {
+        title: "Moby Dick",
+        author: "Herman Melville",
+        pageOne: "Call me Ishmael. Some years ago—never mind how long precisely...",
+        link: "https://www.gutenberg.org/ebooks/2701"
+      },
+      {
+        title: "Dracula",
+        author: "Bram Stoker",
+        pageOne: "3 May. Bistritz. — Left Munich at 8:35 P.M., on 1st May...",
+        link: "https://www.gutenberg.org/ebooks/345"
+      },
+      {
+        title: "The Adventures of Sherlock Holmes",
+        author: "Arthur Conan Doyle",
+        pageOne: "To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any other name...",
+        link: "https://www.gutenberg.org/ebooks/1661"
+      }
+    ];
+
+    function loadRandomBook() {
+      const book = books[Math.floor(Math.random() * books.length)];
+      document.getElementById('title').textContent = book.title;
+      document.getElementById('author').textContent = "by " + book.author;
+      document.getElementById('first-page').textContent = book.pageOne;
+      document.getElementById('read-more').href = book.link;
+    }
+
+    // Load one on first visit
+    loadRandomBook();
+  </script>
+</body>
+</html>
